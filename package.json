@@ -8,10 +8,22 @@
   "license": "Private",
   "private": true,
   "scripts": {
-    "watch": "npm-run-all build-semantic --parallel watch-parcel watch-semantic",
-    "watch-parcel": "parcel index.html -p 4000",
-    "watch-semantic": "cd src/semantic && gulp",
-    "build-semantic": "cd src/semantic && gulp build"
+    "watch": "parcel index.html -p 4000",
+    "eslint": "eslint ./src --max-warnings 0",
+    "precommit": "lint-staged",
+    "precommit-eslint": "yarn eslint"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "yarn run precommit-eslint"
+    ]
+  },
+  "prepush": {
+    "tasks": [
+      "yarn run eslint"
+    ],
+    "onDirtyState": "ask",
+    "coloredOuput": true
   },
   "dependencies": {
     "airbnb-browser-shims": "^2.1.0",
@@ -47,7 +59,10 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.1.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.5",
     "parcel-bundler": "^1.7.1",
+    "prepush": "^3.1.11",
     "prettier": "^1.12.1"
   }
 }
