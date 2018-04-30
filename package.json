@@ -15,12 +15,12 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "yarn run precommit-eslint"
+      "npm run precommit-eslint"
     ]
   },
   "prepush": {
     "tasks": [
-      "yarn run eslint"
+      "npm run eslint"
     ],
     "onDirtyState": "ask",
     "coloredOuput": true
