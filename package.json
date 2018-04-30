@@ -7,6 +7,12 @@
   "author": "Rahul Parkar & Daniel Hawton",
   "license": "Private",
   "private": true,
+  "scripts": {
+    "watch": "npm-run-all build-semantic --parallel watch-parcel watch-semantic",
+    "watch-parcel": "parcel index.html -p 4000",
+    "watch-semantic": "cd src/semantic && gulp",
+    "build-semantic": "cd src/semantic && gulp build"
+  },
   "dependencies": {
     "airbnb-browser-shims": "^2.1.0",
     "axios": "^0.18.0",
