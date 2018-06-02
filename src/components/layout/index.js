@@ -1,6 +1,3 @@
-import 'styles/global';
-import theme from 'styles/theme';
-
 import React from 'react';
 
 import {
@@ -8,12 +5,9 @@ import {
   Header,
   Menu,
   Segment,
-  Visibility
+  Visibility,
 } from 'semantic-ui-react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
-import { ThemeProvider } from 'styled-components';
-import { PageLayout } from './style';
 
 import MainMenu from 'components/MainMenu';
 
@@ -34,49 +28,45 @@ class Layout extends React.Component {
   render() {
     const { visible } = this.state;
     return (
-      <ThemeProvider theme={theme}>
-        <PageLayout>
-          <BrowserRouter>
-            <div>
-              {visible ? this.renderFixedMenu() : null}
+      <BrowserRouter>
+        <div>
+          {visible ? this.renderFixedMenu() : null}
 
-              <Visibility
-                onBottomPassed={this.showFixedMenu}
-                onBottomVisible={this.hideFixedMenu}
-                once={false}
-              >
-                <Segment
+          <Visibility
+            onBottomPassed={this.showFixedMenu}
+            onBottomVisible={this.hideFixedMenu}
+            once={false}
+          >
+            <Segment
+              inverted
+              textAlign="center"
+              style={{ minHeight: 300, padding: '0em 0em' }}
+              vertical
+            >
+              <Menu inverted borderless stackable size="large">
+                <MainMenu />
+              </Menu>
+
+              <Container text>
+                <Header
+                  as="h1"
+                  content="VATUSA"
                   inverted
-                  textAlign="center"
-                  style={{ minHeight: 300, padding: '0em 0em' }}
-                  vertical
-                >
-                  <Menu inverted borderless stackable size="large">
-                    <MainMenu />
-                  </Menu>
-
-                  <Container text>
-                    <Header
-                      as="h1"
-                      content="VATUSA"
-                      inverted
-                      style={{
+                  style={{
                         fontSize: '4em',
                         fontWeight: 'normal',
                         marginBottom: 0,
-                        marginTop: '0.5em'
+                        marginTop: '0.5em',
                       }}
-                    />
-                  </Container>
-                </Segment>
-              </Visibility>
-              <Switch>
-                <Route exact path="/" />
-              </Switch>
-            </div>
-          </BrowserRouter>
-        </PageLayout>
-      </ThemeProvider>
+                />
+              </Container>
+            </Segment>
+          </Visibility>
+          <Switch>
+            <Route exact path="/" />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

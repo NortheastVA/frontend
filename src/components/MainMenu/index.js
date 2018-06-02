@@ -1,16 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Container, Image, Menu, Button } from 'semantic-ui-react';
 
 class MainMenu extends React.PureComponent {
-  static propTypes = {
-    authInfo: PropTypes.shape()
-  };
-
-  static defaultProps = {
-    authInfo: null
-  };
-
   onLoginButtonClick = () => {
     window.location.href = 'https://login.vatusa.net';
   };
