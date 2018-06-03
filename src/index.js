@@ -2,10 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import 'babel-polyfill';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import Layout from 'pages/layout';
+import LoginPage from 'pages/LoginPage';
 
 // import { fetchAuth } from './ducks/auth';
 import configureStore from './store/configureStore';
@@ -16,12 +18,12 @@ const store = configureStore();
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#1565c0',
+      main: '#1565c0'
     },
     secondary: {
-      main: '#ef6c00',
-    },
-  },
+      main: '#ef6c00'
+    }
+  }
 });
 
 class App extends React.PureComponent {
@@ -30,7 +32,11 @@ class App extends React.PureComponent {
       <Provider store={store}>
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout />
+          <BrowserRouter>
+            <Switch>
+              <Route path="/login" component={LoginPage} />
+            </Switch>
+          </BrowserRouter>
         </MuiThemeProvider>
       </Provider>
     );

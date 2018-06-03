@@ -9,7 +9,12 @@ module.exports = {
     mocha: true
   },
   extends: [
-    "airbnb"
+    'airbnb',
+    'standard',
+    'plugin:react/recommended',
+    'prettier',
+    'prettier/flowtype',
+    'prettier/react',
   ],
   parser: 'babel-eslint',
   parserOptions: {
@@ -20,11 +25,19 @@ module.exports = {
     },
     allowImportExportEverywhere: false
   },
-  plugins: [],
+  plugins: ['react', 'flowtype', 'jsx-a11y', 'import', 'prettier'],
   rules: {
-    'class-methods-use-this': 0,
-    'react/jsx-filename-extension': 0,
-    'react/prefer-stateless-function': 0
+    'prettier/prettier': [
+      1,
+      {
+        singleQuote: true
+      }
+    ],
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
+    'react/prop-types': [1],
+    'react/prefer-stateless-function': 0,
+    'react/jsx-filename-extension': 0
   },
   settings: {
     'import/resolver': {

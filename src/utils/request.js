@@ -7,13 +7,13 @@ const getUrl = () => {
   if (process.env.NODE_ENV === 'production') {
     return 'https://api.northeastva.org/';
   }
-  return 'https://api.dev.northeastva.org/';
+  return 'http://api.northeastva.devel/';
 };
 
 export default axios.create({
   baseURL: getUrl(),
   withCredentials: true,
   headers: {
-    Authorization: `bearer ${sessionJwt}`,
-  },
+    Authorization: `bearer ${sessionJwt}`
+  }
 });
