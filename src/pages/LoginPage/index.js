@@ -18,7 +18,7 @@ import VpnKey from '@material-ui/icons/VpnKey';
 
 import { attemptLogin } from 'ducks/login';
 
-const styles = {
+const styles = theme => ({
   card: {
     minWidth: 275,
     maxWidth: 768,
@@ -32,8 +32,12 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between'
+  },
+  close: {
+    width: theme.spacing.unit * 4,
+    height: theme.spacing.unit * 4
   }
-};
+});
 
 class LoginPage extends React.Component {
   static propTypes = {
@@ -80,7 +84,7 @@ class LoginPage extends React.Component {
     const { isLoading } = this.props;
 
     if (isLoading) {
-      return <LinearProgress />;
+      return <LinearProgress color="secondary" />;
     }
 
     return null;

@@ -37,7 +37,8 @@ module.exports = {
     'react/jsx-uses-vars': 'error',
     'react/prop-types': [1],
     'react/prefer-stateless-function': 0,
-    'react/jsx-filename-extension': 0
+    'react/jsx-filename-extension': 0,
+    'no-shadow': 0
   },
   settings: {
     'import/resolver': {

@@ -1,5 +1,6 @@
 import request from 'utils/request';
 import { takeEvery, call, put } from 'redux-saga/effects';
+import { showSnack } from 'ducks/notifications';
 
 // Actions
 const LOGIN = 'nee/login/LOGIN';
@@ -60,5 +61,6 @@ export function* getLogin(action) {
     yield put({
       type: LOGIN_FAILED
     });
+    yield put(showSnack('Login failed'));
   }
 }

@@ -11,6 +11,7 @@ import LoginPage from 'pages/LoginPage';
 
 // import { fetchAuth } from './ducks/auth';
 import configureStore from './store/configureStore';
+import SnackBarNotifier from './components/SnackBarNotifier';
 
 const store = configureStore();
 // store.dispatch(fetchAuth());
@@ -37,6 +38,7 @@ class App extends React.PureComponent {
               <Route path="/login" component={LoginPage} />
             </Switch>
           </BrowserRouter>
+          <SnackBarNotifier />
         </MuiThemeProvider>
       </Provider>
     );
