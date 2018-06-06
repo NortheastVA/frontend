@@ -9,6 +9,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -37,7 +38,14 @@ const styles = {
 class LoginPage extends React.Component {
   static propTypes = {
     classes: PropTypes.shape({}).isRequired,
-    attemptLogin: PropTypes.func.isRequired
+    attemptLogin: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    loginSuccessful: PropTypes.bool,
+    history: PropTypes.shape({}).isRequired
+  };
+
+  static defaultProps = {
+    loginSuccessful: null
   };
 
   constructor(props) {
@@ -47,6 +55,14 @@ class LoginPage extends React.Component {
       username: '',
       password: ''
     };
+  }
+
+  componentDidUpdate() {
+    const { loginSuccessful, history } = this.props;
+
+    if (loginSuccessful) {
+      history.push('/');
+    }
   }
 
   handleChange = name => event => {
@@ -60,12 +76,23 @@ class LoginPage extends React.Component {
     this.props.attemptLogin(username, password);
   };
 
+  renderProgressBar() {
+    const { isLoading } = this.props;
+
+    if (isLoading) {
+      return <LinearProgress />;
+    }
+
+    return null;
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
       <React.Fragment>
         <Card className={classes.card}>
+          {this.renderProgressBar()}
           <CardHeader title="Login" />
           <CardContent className={classes.form}>
             <TextField
@@ -114,7 +141,10 @@ class LoginPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  isLoading: state.login.isLoading,
+  loginSuccessful: state.login.loginSuccessful
+});
 
 const mapDispatchToProps = {
   attemptLogin

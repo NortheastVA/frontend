@@ -7,8 +7,31 @@ const LOGIN_SUCCEEDED = 'nee/login/LOGIN_SUCCEEDED';
 const LOGIN_FAILED = 'nee/login/LOGIN_FAILED';
 
 // Reducer
-export default function reducer(state = {}, action = {}) {
+export default function reducer(
+  state = {
+    isLoading: false,
+    loginSuccessful: null
+  },
+  action = {}
+) {
   switch (action.type) {
+    case LOGIN:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case LOGIN_SUCCEEDED:
+      return {
+        ...state,
+        isLoading: false,
+        loginSuccessful: true
+      };
+    case LOGIN_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        loginSuccessful: false
+      };
     default:
       return state;
   }

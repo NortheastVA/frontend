@@ -12,7 +12,6 @@ const getUrl = () => {
 
 export default axios.create({
   baseURL: getUrl(),
-  withCredentials: true,
   headers: {
     Authorization: `bearer ${sessionJwt}`
   }

@@ -1,6 +1,13 @@
 {
-    "presets": ["env"],
+    "presets": [["env", {
+      "useBuiltIns": true
+    }]],
     "plugins": ["transform-class-properties",
+      ["transform-object-rest-spread",
+        {
+          "useBuiltIns": true
+        }
+      ],
       ["module-resolver", {
         "root": ["./"],
         "alias": {
