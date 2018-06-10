@@ -38,7 +38,8 @@ module.exports = {
     'react/prop-types': [1],
     'react/prefer-stateless-function': 0,
     'react/jsx-filename-extension': 0,
-    'no-shadow': 0
+    'no-shadow': 0,
+    'class-methods-use-this': 0
   },
   settings: {
     'import/resolver': {
