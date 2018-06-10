@@ -52,10 +52,11 @@ export function* getLogin(action) {
   const { username, password } = action;
 
   try {
-    yield call(
+    const response = yield call(
       request.get,
       `/auth/login?username=${username}&password=${password}&token`
     );
+    yield window.sessionStorage.setItem('token', response.data.token);
     yield put({ type: LOGIN_SUCCEEDED });
   } catch (e) {
     yield put({
