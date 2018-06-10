@@ -7,8 +7,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+import Header from 'components/Header';
 import LoginPage from 'pages/LoginPage';
-import MainPage from 'pages/MainPage';
+import RoutePage from 'pages/RoutePage';
 
 // import { fetchAuth } from './ducks/auth';
 import configureStore from './store/configureStore';
@@ -34,10 +35,11 @@ class App extends React.PureComponent {
       <Provider store={store}>
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
+          <Header />
           <BrowserRouter>
             <Switch>
               <Route path="/login" component={LoginPage} />
-              <Route path="/" component={MainPage} />
+              <Route path="/route/:id" component={RoutePage} />
             </Switch>
           </BrowserRouter>
           <SnackBarNotifier />

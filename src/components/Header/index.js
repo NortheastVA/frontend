@@ -17,7 +17,8 @@ import getToken from 'utils/getToken';
 
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    marginBottom: 16
   },
   flex: {
     flex: 1
